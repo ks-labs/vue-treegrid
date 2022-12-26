@@ -1,6 +1,6 @@
 {
-  "name": "@ks-labs/vue-treegrid",
-  "version": "1.0.0",
+  "name": "vue-treegrid",
+  "version": "1.0.1",
   "main": "dist/vue-treegrid.umd.js",
   "module": "dist/vue-treegrid.esm.js",
   "unpkg": "dist/vue-treegrid.min.js",
@@ -38,5 +38,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ks-labs/vue-treegrid/issues"
-  }
+  },
+  "dependencies": {}
 }
