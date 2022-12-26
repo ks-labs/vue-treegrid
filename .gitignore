@@ -3,5 +3,3 @@ node_modules
 .npmrc
 
 .env
-
-dist/**.js
