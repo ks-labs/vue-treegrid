@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.0.0
-      - run: npm ci
+      - run: npm build
 
   deploy-package:
     needs: [build]

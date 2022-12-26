@@ -1,6 +1,6 @@
 {
   "name": "@ks-labs/vue-treegrid",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "module": "dist/vue-treegrid.esm.js",
   "unpkg": "dist/vue-treegrid.min.js",
   "files": [
