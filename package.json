@@ -1,12 +1,12 @@
 {
-  "name": "vue-treegrid",
+  "name": "@ks-labs/vue-treegrid",
   "version": "1.0.0",
   "main": "dist/vue-treegrid.umd.js",
   "module": "dist/vue-treegrid.esm.js",
   "unpkg": "dist/vue-treegrid.min.js",
-  "browser": {
-    "./sfc": "src/vue-treegrid.vue"
-  },
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
@@ -22,7 +22,21 @@
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },
+  "homepage": "https://github.com/ks-labs/vue-treegrid#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/ksgl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ks-labs/vue-treegrid.git"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Victor Lessa victordsgnr@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ks-labs/vue-treegrid/issues"
+  }
 }
