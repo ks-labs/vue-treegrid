@@ -7,15 +7,16 @@
 1. Install npm module
 
 ```bash
-npm i @ks-labs/vue-treegrid
+npm i @ks-labs/treegrid
 ```
 
 2. Import module
 
 ```js
+// main.js
 import Vue from "vue";
-import TreeGrid from "@ks-labs/vue-treegrid";
-import "@ks-labs/vue-treegrid/src/assets/css/jquery.treegrid.css";
+import TreeGrid from "@ks-labs/treegrid";
+import "@ks-labs/treegrid/src/assets/css/jquery.treegrid.css";
 
 Vue.use(TreeGrid);
 ```
