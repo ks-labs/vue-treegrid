@@ -1,6 +1,6 @@
 {
   "name": "@ks-labs/vue-treegrid",
-  "version": "1.0.10",
+  "version": "0.0.1",
   "main": "src/wrapper.js",
   
   "module": "dist/vue-treegrid.esm.js",
