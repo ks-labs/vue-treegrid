@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Publish Vue-Treegrid
 
 on:
   release:
@@ -9,17 +9,7 @@ on:
     branches: [production]
   workflow_dispatch:
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14.0.0
-      - run: npm build
-
   deploy-package:
-    needs: [build]
     name: "Deploy Package to Actions"
     runs-on: ubuntu-latest
     steps:
