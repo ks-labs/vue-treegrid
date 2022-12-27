@@ -10,7 +10,7 @@
         v-for="(item, index) in rows"
         :key="index"
         :class="`treegrid-${item.id} ${
-          item.parent_id ? `treegrid-parent-${item.parent_id}` : ''
+          item.pid ? `treegrid-parent-${item.pid}` : ''
         }`"
       >
         <td v-for="(column, index) in columns" :key="index">
