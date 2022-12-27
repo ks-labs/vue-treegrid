@@ -1,5 +1,5 @@
 <template>
-  <table class="table table-bordered tree">
+  <table class="tree">
     <thead>
       <th v-for="(item, index) in columns" :key="index">
         {{ item.name }}
@@ -26,6 +26,7 @@
 <script>
 import "./assets/js/jquery.treegrid";
 export default {
+  name: "treegrid",
   props: {
     columns: {
       type: Array,
@@ -37,13 +38,11 @@ export default {
     },
     options: {
       type: Object,
-      default: {},
+      require: false,
     },
   },
-  created() {
-    $(document).ready(function () {
-      $(".tree").treegrid(this.options);
-    });
+  mounted() {
+    $(".tree").treegrid(this.options);
   },
 };
 </script>

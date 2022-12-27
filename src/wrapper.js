@@ -1,6 +1,6 @@
 import component from "./vue-treegrid.vue";
 // Declare install function executed by Vue.use()
-export function install(Vue) {
+export default function install(Vue) {
   if (install.installed) return;
   install.installed = true;
   Vue.component("treegrid", component);
@@ -21,6 +21,3 @@ if (typeof window !== "undefined") {
 if (GlobalVue) {
   GlobalVue.use(plugin);
 }
-
-// To allow use as module (npm/webpack/etc.) export component
-export default component;
