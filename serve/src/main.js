@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import TreeGrid from "../../src/wrapper.js";
+import "../../src/assets/css/jquery.treegrid.css";
 
 import "bootstrap/dist/css/bootstrap.css";
 

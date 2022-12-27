@@ -46,7 +46,3 @@ export default {
   },
 };
 </script>
-
-<style>
-@import "./assets/css/jquery.treegrid.css";
-</style>
