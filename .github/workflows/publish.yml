@@ -20,6 +20,8 @@ jobs:
           node-version: 14.0.0
           registry-url: https://npm.pkg.github.com/
           scope: "@ks-labs"
+      - run: npm i
+      - run: npm run build
       - run: echo "registry=https://npm.pkg.github.com/ks-labs" >> .npmrc
       - run: npm publish $(ls *.tgz)
         env:
