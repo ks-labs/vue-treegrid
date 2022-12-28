@@ -6,6 +6,7 @@
   "module": "dist/vue-treegrid.esm.js",
   "unpkg": "dist/vue-treegrid.min.js",
   "scripts": {
+    "test": "jest",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
     "test:unit": "vue-cli-service test:unit",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-treegrid.esm.js",
