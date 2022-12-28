@@ -1,0 +1,31 @@
+name: Test Vue-Treegrid
+
+on:
+  release:
+    types: [created]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  test:
+    name: 'Test Component'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.15.4]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://npm.pkg.github.com/
+          scope: '@ks-labs'
+      # Skip post-install scripts here, as a malicious
+      # script could steal NODE_AUTH_TOKEN.
+      - run: npm install --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # rebuild will run the scripts skipped
+      - run: npm run test

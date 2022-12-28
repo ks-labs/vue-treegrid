@@ -3,15 +3,15 @@ name: Publish Vue-Treegrid
 on:
   release:
     types: [created]
-  push:
-    branches: [production]
   pull_request:
-    branches: [production]
+    branches: [main]
   workflow_dispatch:
 jobs:
   deploy-package:
     name: "Deploy Package to Actions"
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 12.18.3

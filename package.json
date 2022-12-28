@@ -1,5 +1,5 @@
 {
-  "name": "@ks-labs/vue-treegrid",
+  "name": "@ks-labs/treegrid",
   "version": "0.0.1",
   "main": "src/wrapper.js",
   
