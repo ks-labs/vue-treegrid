@@ -1,6 +1,6 @@
 {
   "name": "@ks-labs/treegrid",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "author": "Victor Lessa victordsgnr@gmail.com",
   "main": "src/wrapper.js",
   "module": "dist/vue-treegrid.esm.js",
