@@ -32,6 +32,7 @@ Vue.use(TreeGrid);
       :rows="rows"
       :columns="columns"
       :options="options"
+      @row="clickRow"
     ></treegrid>
   </div>
 </template>
