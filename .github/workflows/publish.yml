@@ -1,12 +1,11 @@
 name: Publish Vue-Treegrid
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - closed
   workflow_dispatch:
+    inputs:
+      version:
+        description: "The version you want to release. X.X.X"
+        required: true
 jobs:
   deploy-package:
     if: github.event.pull_request.merged == true
