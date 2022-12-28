@@ -2,7 +2,10 @@ name: Publish Vue-Treegrid
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
+    types:
+      - closed
   workflow_dispatch:
 jobs:
   deploy-package:
