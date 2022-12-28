@@ -12,6 +12,7 @@
         :class="`treegrid-${item.id} ${
           item.pid ? `treegrid-parent-${item.pid}` : ''
         }`"
+        @click="clickRow(item, $event)"
       >
         <td v-for="(column, index) in columns" :key="index">
           <slot :name="column.field" v-bind:[column.field]="item.name">{{
@@ -43,6 +44,15 @@ export default {
   },
   mounted() {
     $(".tree").treegrid(this.options);
+  },
+  methods: {
+    clickRow(item, el) {
+      console.log("click");
+      if ($(el.srcElement).is("td") || $(el.srcElement).is("tr")) {
+        console.log("click", item);
+        this.$emit("row", item);
+      }
+    },
   },
 };
 </script>
