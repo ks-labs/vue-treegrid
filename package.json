@@ -1,6 +1,6 @@
 {
   "name": "@ks-labs/treegrid",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Victor Lessa victordsgnr@gmail.com",
   "scripts": {
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
