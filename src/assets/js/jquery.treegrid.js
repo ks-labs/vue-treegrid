@@ -129,7 +129,8 @@
       }
       $(tpl)
         .prependTo(cell)
-        .click(function () {
+        .click(function (e) {
+          e.preventDefault();
           $($(this).closest("tr")).treegrid("toggle");
         });
       return $this;

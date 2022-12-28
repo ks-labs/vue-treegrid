@@ -5,6 +5,7 @@
       :rows="rows"
       :columns="columns"
       :options="options"
+      @row="clickItem"
     ></treegrid>
   </div>
 </template>
@@ -69,6 +70,11 @@ export default {
       ],
       options: {},
     };
+  },
+  methods: {
+    clickItem(item) {
+      console.log(item);
+    },
   },
 };
 </script>
