@@ -6,7 +6,12 @@
       :columns="columns"
       :options="options"
       @row="clickItem"
-    ></treegrid>
+    >
+      <!-- <template slot="name" slot-scope="{ name }">{{ name }}</template> -->
+      <template slot="teste" slot-scope="{ teste }">{{
+        teste.teste ? teste.teste.total : ""
+      }}</template>
+    </treegrid>
   </div>
 </template>
 
@@ -15,10 +20,14 @@ export default {
   name: "app",
   data() {
     return {
-      columns: [{ name: "Nome", field: "name" }],
+      columns: [
+        { name: "Nome", field: "name" },
+        { name: "teste", field: "teste" },
+      ],
       rows: [
         {
           name: "Root",
+          teste: { total: 2 },
           id: 1,
           pid: null,
         },

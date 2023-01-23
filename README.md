@@ -33,7 +33,10 @@ Vue.use(TreeGrid);
       :columns="columns"
       :options="options"
       @row="clickRow"
-    ></treegrid>
+    >
+      <template slot="name" slot-scope="{ name }">{{ name }}</template>
+      // name = { name: "Root", id: 1, pid: null, }
+    </treegrid>
   </div>
 </template>
 

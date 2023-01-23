@@ -15,8 +15,8 @@
         @click="clickRow(item, $event)"
       >
         <td v-for="(column, index) in columns" :key="index">
-          <slot :name="column.field" v-bind:[column.field]="item.name">{{
-            item.name
+          <slot :name="column.field" v-bind:[column.field]="item">{{
+            item[column.field] || ""
           }}</slot>
         </td>
       </tr>
