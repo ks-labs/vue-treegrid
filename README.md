@@ -3,6 +3,8 @@
 [![Deploy](https://github.com/ks-labs/vue-treegrid/actions/workflows/publish.yml/badge.svg)](https://github.com/ks-labs/vue-treegrid/actions/workflows/publish.yml/badge.svg)
 [![Teste](https://github.com/ks-labs/vue-treegrid/actions/workflows/test.yml/badge.svg)](https://github.com/ks-labs/vue-treegrid/actions/workflows/test.yml/badge.svg)
 
+This component was created using the [tree-grid](https://maxazan.github.io/jquery-treegrid/)
+
 ## How to install
 
 1. Install npm module
@@ -33,6 +35,7 @@ Vue.use(TreeGrid);
       :columns="columns"
       :options="options"
       @row="clickRow"
+      clickColor="blue"
     >
       <template slot="name" slot-scope="{ name }">{{ name }}</template>
       // name = { name: "Root", id: 1, pid: null, }
@@ -104,3 +107,18 @@ Vue.use(TreeGrid);
   };
 </script>
 ```
+
+## Options
+
+| Name       | Type   | Description                                               |
+| ---------- | ------ | --------------------------------------------------------- |
+| Rows       | Array  | All table body data                                       |
+| Columns    | Array  | All data on column headings                               |
+| Options    | Object | Options supported by the tree-grid lib                    |
+| clickColor | String | Color displayed in the background when clicking on a line |
+
+## Events
+
+| Name | Description                                  | Return                   |
+| ---- | -------------------------------------------- | ------------------------ |
+| Row  | Event triggered when clicking on a table row | {data: {}, context: DOM} |
