@@ -7,12 +7,13 @@ export default {
     name: "KsTreegrid",
     exports: "named",
   },
+
   plugins: [
     commonjs(),
     vue({
       css: true, // Dynamically inject css as a <style> tag
       compileTemplate: true, // Explicitly convert template to render function
     }),
-    buble(), // Transpile to ES5
+    buble({ transforms: { dangerousForOf: true } }), // Transpile to ES5
   ],
 };
