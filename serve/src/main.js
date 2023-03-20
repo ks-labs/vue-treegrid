@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import Vue from "vue";
 import App from "./App.vue";
 import TreeGrid from "../../src/wrapper.js";

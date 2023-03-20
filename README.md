@@ -3,7 +3,7 @@
 [![Deploy](https://github.com/ks-labs/vue-treegrid/actions/workflows/publish.yml/badge.svg)](https://github.com/ks-labs/vue-treegrid/actions/workflows/publish.yml/badge.svg)
 [![Teste](https://github.com/ks-labs/vue-treegrid/actions/workflows/test.yml/badge.svg)](https://github.com/ks-labs/vue-treegrid/actions/workflows/test.yml/badge.svg)
 
-This component was created using the [tree-grid](https://maxazan.github.io/jquery-treegrid/)
+This component was created using the [tree-grid](https://maxazan.github.io/jquery-treegrid/) and [bootstrap-table](https://examples.bootstrap-table.com/#extensions/treegrid.html)
 
 ## How to install
 
@@ -22,6 +22,29 @@ import TreeGrid from "@ks-labs/treegrid";
 import "@ks-labs/treegrid/src/assets/css/jquery.treegrid.css";
 
 Vue.use(TreeGrid);
+```
+
+```js
+// public/index.html
+<html>
+  <head>
+    ...
+
+    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/sticky-header/bootstrap-table-sticky-header.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet"/>
+
+    ...
+  </head>
+  <body>
+
+    ...
+
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table-vue.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/sticky-header/bootstrap-table-sticky-header.min.js"></script>
+  </body>
+</html>
 ```
 
 ## How to use

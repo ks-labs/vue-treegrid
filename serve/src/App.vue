@@ -1,19 +1,15 @@
 <template>
   <div>
     <treegrid
-      class="table table-bordered"
+      styles="table table-bordered"
       :rows="rows"
       :columns="columns"
-      :options="options"
-      @row="clickItem"
-      clickColor="blue"
+      :rowStyle="rowStyle"
+      @onPostBody="onPostBody"
+      @onClickRow="onClickRow"
+      @headerStyle="headerStyle"
+      @formatNoMatches="formatNoMatches"
     >
-      <!-- <template slot="name" slot-scope="{ name }">{{ name }}</template> -->
-      <template slot="january" slot-scope="{ january: row }"
-        ><div class="te">
-          {{ row.total }}
-        </div>
-      </template>
     </treegrid>
   </div>
 </template>
@@ -24,8 +20,153 @@ export default {
   data() {
     return {
       columns: [
-        { name: "Nome", field: "name" },
-        { name: "january", field: "january" },
+        {
+          field: "name",
+          title: "Projeto/Área",
+          align: "left",
+          cellStyle: (_, body) => {
+            if (body.isConsolidation) {
+              return { classes: "is-line-root" };
+            }
+            return { classes: "name-field" };
+          },
+        },
+        {
+          field: "media",
+          title: "Média",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value ?? 0);
+          },
+          cellStyle: () => {
+            return {
+              classes: "column-media",
+            };
+          },
+        },
+        {
+          field: "total",
+          title: "Total",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value ?? 0);
+          },
+          cellStyle: () => {
+            return {
+              classes: "column-total",
+            };
+          },
+        },
+        {
+          field: "january",
+          title: "Janeiro",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "february",
+          title: "Fevereiro",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "march",
+          title: "Março",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "april",
+          title: "Abril",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "may",
+          title: "Maio",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "june",
+          title: "Junho",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "july",
+          title: "Julho",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "august",
+          title: "Agosto",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "september",
+          title: "Setembro",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "october",
+          title: "Outubro",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "november",
+          title: "Novembro",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
+        {
+          field: "december",
+          title: "Dezembro",
+          align: "left",
+          formatter: (value, row) => {
+            if (!row?.total) return "";
+            return this.formatCurrency(value?.total ?? 0);
+          },
+        },
       ],
       rows: [
         {
@@ -5074,8 +5215,33 @@ export default {
     };
   },
   methods: {
-    clickItem(el) {
-      console.log(el);
+    rowStyle(row) {
+      if (row.isConsolidation) {
+        return {
+          classes: "is-line-root",
+        };
+      }
+      return {};
+    },
+    onClickRow(_, el) {
+      if (!$(el).hasClass("row-active")) {
+        $(".row-active").removeClass("row-active");
+        return $(el).addClass("row-active");
+      }
+      return $(".row-active").removeClass("row-active");
+    },
+    onPostBody(treeGrid) {
+      treeGrid.treegrid({
+        initialState: "collapsed",
+      });
+    },
+    headerStyle(column) {
+      console.log("headerStyle", column);
+    },
+
+    formatNoMatches() {},
+    formatCurrency(value) {
+      return value;
     },
   },
 };
