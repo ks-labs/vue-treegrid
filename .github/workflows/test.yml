@@ -35,4 +35,6 @@ jobs:
       - name: Is Api Runing ?
         run: curl -Is http://localhost:4444 | head -n 1
       - name: Run Test
-        run: npm run test
+        run: | 
+          cd ..
+          npm run test
