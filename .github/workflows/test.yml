@@ -37,6 +37,8 @@ jobs:
       - name: Run Test
         run: | 
           npm i
+          echo instalar puppeteer
+          npm i puppeteer
           ls $HOME/.cache/puppeteer
           echo $HOME\.cache\puppeteer
           npm run test
