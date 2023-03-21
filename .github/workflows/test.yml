@@ -28,7 +28,9 @@ jobs:
       # rebuild will run the scripts skipped
       - run: | 
           npm i
+          ls -al
           cd serve
+          ls -al
           npm run serve &
       - name: Is Api Runing ?
         run: curl -Is http://localhost:8080 | head -n 1
