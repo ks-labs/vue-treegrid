@@ -37,5 +37,4 @@ jobs:
       - name: Run Test
         run: | 
           ls -al
-          cd ..
           npm run test
