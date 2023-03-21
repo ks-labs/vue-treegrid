@@ -40,6 +40,14 @@ export default {
       type: String,
       default: "pid",
     },
+    treeEnable: {
+      type: Boolean,
+      default: false,
+    },
+    rootParentId: {
+      type: String,
+      default: null,
+    },
     rowStyle: {
       type: Function,
       default: function (row) {
@@ -63,11 +71,14 @@ export default {
         idField: this.idField,
         classes: this.styles,
         columns: this.columns,
+        rootParentId: this.rootParentId,
+        treeEnable: this.treeEnable,
         stickyHeader: this.stickyHeader,
         treeShowField: this.treeShowField,
         parentIdField: this.parentIdField,
         onPostBody: () => this.$emit("onPostBody", treeGrid),
-        onClickRow: (_, element) => this.$emit("onClickRow", { _, element }),
+        onClickRow: (row, element, field) =>
+          this.$emit("onClickRow", { row, element, field }),
         headerStyle: (column) => this.$emit("headerStyle", column),
         rowStyle: this.rowStyle,
         formatNoMatches: () => this.$emit("formatNoMatches"),

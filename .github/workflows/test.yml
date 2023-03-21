@@ -26,4 +26,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # rebuild will run the scripts skipped
-      - run: npm run test
+      - run: | 
+          cd serve
+          npm run serve &
+      - name: Is Api Runing ?
+        run: curl -Is http://localhost:8080 | head -n 1
+      - name: Run Test
+        run: npm run test

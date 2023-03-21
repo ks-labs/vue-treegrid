@@ -5211,7 +5211,6 @@ export default {
           isConsolidation: true,
         },
       ],
-      options: {},
     };
   },
   methods: {
