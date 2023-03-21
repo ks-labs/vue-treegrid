@@ -26,4 +26,19 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # rebuild will run the scripts skipped
-      - run: npm run test
+      - run: | 
+          npm i
+          cd serve
+          npm i
+          echo 'Run Server'
+          npm run serve -- --port 4444 &
+      - name: Is Api Runing ?
+        run: curl -Is http://localhost:4444 | head -n 1
+      - name: Run Test
+        run: | 
+          npm i
+          echo instalar puppeteer
+          npm i puppeteer
+          ls $HOME/.cache/puppeteer
+          echo $HOME\.cache\puppeteer
+          npm run test

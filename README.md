@@ -53,15 +53,15 @@ Vue.use(TreeGrid);
 <template>
   <div>
     <treegrid
-      class="table table-bordered"
+      styles="table table-bordered"
       :rows="rows"
       :columns="columns"
-      :options="options"
-      @row="clickRow"
-      clickColor="blue"
+      :rowStyle="rowStyle"
+      @onPostBody="onPostBody"
+      @onClickRow="onClickRow"
+      @headerStyle="headerStyle"
+      @formatNoMatches="formatNoMatches"
     >
-      <template slot="name" slot-scope="{ name }">{{ name }}</template>
-      // name = { name: "Root", id: 1, pid: null, }
     </treegrid>
   </div>
 </template>
@@ -71,77 +71,118 @@ Vue.use(TreeGrid);
     name: "app",
     data() {
       return {
-        columns: [{ name: "Nome", field: "name" }],
-        rows: [
+        columns: [
           {
-            name: "Root",
-            id: 1,
-            pid: null,
+            field: "name",
+            title: "Projeto/Área",
+            align: "left",
+            cellStyle: (_, body) => {
+              if (body.isConsolidation) {
+                return { classes: "is-line-root" };
+              }
+              return { classes: "name-field" };
+            },
           },
           {
-            name: "Root 1",
-            id: 2,
-            pid: 1,
-          },
-          {
-            name: "Root 1",
-            id: 3,
-            pid: 1,
-          },
-          {
-            name: "Root 1",
-            id: 4,
-            pid: 1,
-          },
-          {
-            name: "Root 1",
-            id: 5,
-            pid: 4,
-          },
-          {
-            name: "Root 1",
-            id: 6,
-            pid: null,
-          },
-          {
-            name: "Root 7",
-            id: 7,
-            pid: 6,
-          },
-          {
-            name: "Root 7 - 1",
-            id: 8,
-            pid: 7,
-          },
-          {
-            name: "Root 1",
-            id: 9,
-            pid: 6,
-          },
-          {
-            name: "Root 1",
-            id: 10,
-            pid: 6,
+            field: "media",
+            title: "Média",
+            align: "left",
+            formatter: (value, row) => {
+              if (!row?.total) return "";
+              return this.formatCurrency(value ?? 0);
+            },
+            cellStyle: () => {
+              return {
+                classes: "column-media",
+              };
+            },
           },
         ],
-        options: {},
+        rows: [
+          {
+            id: 154,
+            media: 6098.49,
+            total: 6098.49,
+            january: {
+              total: 6098.49,
+              isProjection: false,
+              hasDuplicated: {
+                value: true,
+                duplicated: [
+                  {
+                    id: 70,
+                    invoice_id: 950,
+                    cost_center_id: 2922,
+                    vehicle_id: 552,
+                    traffic_ticket_id: null,
+                    billing_month: "2023-01-01",
+                    cost_type: "Rental",
+                    value: 2033,
+                    description: null,
+                    created_at: "2023-01-23 19:02:46",
+                    updated_at: "2023-01-23 19:02:46",
+                  },
+                  {
+                    id: 65,
+                    invoice_id: 945,
+                    cost_center_id: 2003,
+                    vehicle_id: 552,
+                    traffic_ticket_id: null,
+                    billing_month: "2023-01-19",
+                    cost_type: "Rental",
+                    value: 993.29,
+                    description: null,
+                    created_at: "2023-01-19 17:35:24",
+                    updated_at: "2023-01-19 19:49:34",
+                  },
+                ],
+              },
+            },
+            name: "Gastos Gerais",
+            isConsolidation: true,
+          },
+          {
+            id: 157,
+            media: 2200,
+            total: 2200,
+            pid: null,
+            january: {
+              total: 2200,
+              isProjection: true,
+              hasDuplicated: { value: false, duplicated: [] },
+            },
+            name: "Diretoria de Logística",
+            isConsolidation: true,
+          },
+        ],
       };
     },
   };
 </script>
 ```
 
-## Options
+Below are some configurations supported by the component, if you need a new configuration please open a Pull Request
 
-| Name       | Type   | Description                                               |
-| ---------- | ------ | --------------------------------------------------------- |
-| Rows       | Array  | All table body data                                       |
-| Columns    | Array  | All data on column headings                               |
-| Options    | Object | Options supported by the tree-grid lib                    |
-| clickColor | String | Color displayed in the background when clicking on a line |
+## Props
+
+| Name          | Type     | Default | Description                                                        |
+| ------------- | -------- | ------- | ------------------------------------------------------------------ |
+| Rows          | Array    |         | All table body data                                                |
+| Columns       | Array    |         | All data on column headings                                        |
+| idField       | String   | id      | Overwrite the default idField to 'id'                              |
+| parentIdField | String   | pid     | Set the parent id field.                                           |
+| treeShowField | String   |         | Set the treeShowField will auto enable the tree grid.              |
+| rootParentId  | String   | null    | Set the root parent id.                                            |
+| treeEnable    | Boolean  | false   | Set true to enable the tree grid.                                  |
+| stickyHeader  | Boolean  | false   | Set true to use sticky header.                                     |
+| clickColor    | String   |         | Color displayed in the background when clicking on a line          |
+| rowStyle      | Function | {}      | The row style formatter function, takes two parameters: row, index |
 
 ## Events
 
-| Name | Description                                  | Return                   |
-| ---- | -------------------------------------------- | ------------------------ |
-| Row  | Event triggered when clicking on a table row | {data: {}, context: DOM} |
+| Name            | Description                                                                                  | params                         |
+| --------------- | -------------------------------------------------------------------------------------------- | ------------------------------ |
+| onPostBody      | It fires after the table body are rendered and available in the DOM. The parameters contain: | element treegrid               |
+| onClickRow      | It fires when the user clicks a row                                                          | Object: {row, $element, field} |
+| headerStyle     | The header style formatter function                                                          | column                         |
+| formatNoMatches | --                                                                                           |                                |
