@@ -36,5 +36,6 @@ jobs:
         run: curl -Is http://localhost:4444 | head -n 1
       - name: Run Test
         run: | 
+          ls -al
           cd ..
           npm run test
