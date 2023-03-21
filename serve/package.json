@@ -8,7 +8,6 @@
     "lint": "npx vue-cli-service lint"
   },
   "dependencies": {
-    "@ks-labs/vue-treegrid": "^1.0.8",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "core-js": "^3.8.3",
