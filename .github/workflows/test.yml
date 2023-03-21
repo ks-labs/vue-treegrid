@@ -37,5 +37,6 @@ jobs:
       - name: Run Test
         run: | 
           npm i
-          ls -al
+          ls $HOME/.cache/puppeteer
+          echo $HOME\.cache\puppeteer
           npm run test
