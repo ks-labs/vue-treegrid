@@ -27,6 +27,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # rebuild will run the scripts skipped
       - run: | 
+          npm i
           cd serve
           npm i
           echo 'Run Server'
