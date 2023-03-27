@@ -57,10 +57,10 @@ Vue.use(TreeGrid);
       :rows="rows"
       :columns="columns"
       :rowStyle="rowStyle"
+      :formatNoMatches="formatNoMatches"
       @onPostBody="onPostBody"
       @onClickRow="onClickRow"
       @headerStyle="headerStyle"
-      @formatNoMatches="formatNoMatches"
     >
     </treegrid>
   </div>
@@ -165,24 +165,29 @@ Below are some configurations supported by the component, if you need a new conf
 
 ## Props
 
-| Name          | Type     | Default | Description                                                        |
-| ------------- | -------- | ------- | ------------------------------------------------------------------ |
-| Rows          | Array    |         | All table body data                                                |
-| Columns       | Array    |         | All data on column headings                                        |
-| idField       | String   | id      | Overwrite the default idField to 'id'                              |
-| parentIdField | String   | pid     | Set the parent id field.                                           |
-| treeShowField | String   |         | Set the treeShowField will auto enable the tree grid.              |
-| rootParentId  | String   | null    | Set the root parent id.                                            |
-| treeEnable    | Boolean  | false   | Set true to enable the tree grid.                                  |
-| stickyHeader  | Boolean  | false   | Set true to use sticky header.                                     |
-| clickColor    | String   |         | Color displayed in the background when clicking on a line          |
-| rowStyle      | Function | {}      | The row style formatter function, takes two parameters: row, index |
+| Name            | Type     | Default | Description                                                        |
+| --------------- | -------- | ------- | ------------------------------------------------------------------ |
+| Rows            | Array    |         | All table body data                                                |
+| Columns         | Array    |         | All data on column headings                                        |
+| idField         | String   | id      | Overwrite the default idField to 'id'                              |
+| parentIdField   | String   | pid     | Set the parent id field.                                           |
+| treeShowField   | String   |         | Set the treeShowField will auto enable the tree grid.              |
+| rootParentId    | String   | null    | Set the root parent id.                                            |
+| treeEnable      | Boolean  | false   | Set true to enable the tree grid.                                  |
+| stickyHeader    | Boolean  | false   | Set true to use sticky header.                                     |
+| clickColor      | String   |         | Color displayed in the background when clicking on a line          |
+| rowStyle        | Function | {}      | The row style formatter function, takes two parameters: row, index |
+| formatNoMatches | Function | ''      | Set message when the rows array is empty                           |
 
 ## Events
 
-| Name            | Description                                                                                  | params                         |
-| --------------- | -------------------------------------------------------------------------------------------- | ------------------------------ |
-| onPostBody      | It fires after the table body are rendered and available in the DOM. The parameters contain: | element treegrid               |
-| onClickRow      | It fires when the user clicks a row                                                          | Object: {row, $element, field} |
-| headerStyle     | The header style formatter function                                                          | column                         |
-| formatNoMatches | --                                                                                           |                                |
+| Name           | Description                                                                                  | params                                |
+| -------------- | -------------------------------------------------------------------------------------------- | ------------------------------------- |
+| onPostBody     | It fires after the table body are rendered and available in the DOM. The parameters contain: | element treegrid                      |
+| onClickRow     | It fires when the user clicks a row                                                          | Object: {row, $element, field}        |
+| onClickCell    | It fires when the user clicks a cell                                                         | Object: {field, value, row, $element} |
+| onDblClickRow  | It fires when the user double clicks a row                                                   | Object: {row, $element, field}        |
+| onDblClickCell | It fires when the user double clicks a cell                                                  | Object: {field, value, row, $element} |
+| onExpandRow    | It fires when you click the detail icon to expand the detail view                            | Object: { index, row, $detail}        |
+| onCollapseRow  | It fires when you click the detail icon to collapse the detail view                          | Object: {index, row, detailView}      |
+| headerStyle    | The header style formatter function                                                          | column                                |
