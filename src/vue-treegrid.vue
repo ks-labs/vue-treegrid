@@ -28,6 +28,12 @@ export default {
       type: String,
       default: "table table-bordered text-nowrap",
     },
+    formatNoMatches: {
+      type: Function,
+      default: function () {
+        return "";
+      },
+    },
     stickyHeader: {
       type: Boolean,
       default: true,
@@ -76,12 +82,22 @@ export default {
         stickyHeader: this.stickyHeader,
         treeShowField: this.treeShowField,
         parentIdField: this.parentIdField,
+        rowStyle: this.rowStyle,
         onPostBody: () => this.$emit("onPostBody", treeGrid),
         onClickRow: (row, element, field) =>
           this.$emit("onClickRow", { row, element, field }),
+        onClickCell: (field, value, row, element) =>
+          this.$emit("onClickCell", { field, value, row, element }),
+        onDblClickRow: (row, element, field) =>
+          this.$emit("onDblClickRow", { row, element, field }),
+        onDblClickCell: (field, value, row, element) =>
+          this.$emit("onDblClickCell", { field, value, row, element }),
+        onExpandRow: (index, row, detail) =>
+          this.$emit("onExpandRow", { index, row, detail }),
+        onCollapseRow: (index, row, detailView) =>
+          this.$emit("onCollapseRow", { index, row, detailView }),
         headerStyle: (column) => this.$emit("headerStyle", column),
-        rowStyle: this.rowStyle,
-        formatNoMatches: () => this.$emit("formatNoMatches"),
+        formatNoMatches: () => this.formatNoMatches(),
       });
     },
   },
