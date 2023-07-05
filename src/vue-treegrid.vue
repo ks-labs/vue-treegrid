@@ -1,5 +1,5 @@
 <template>
-  <table id="tree"></table>
+  <table :id="treeId"></table>
 </template>
 
 <script>
@@ -7,6 +7,10 @@ import "./assets/js/jquery.treegrid";
 export default {
   name: "treegrid",
   props: {
+    treeId: {
+      type: String,
+      default: "tree",
+    },
     columns: {
       type: Array,
       required: true,
@@ -71,7 +75,7 @@ export default {
   },
   methods: {
     treeGrid() {
-      const treeGrid = $("#tree");
+      const treeGrid = $(`#${this.treeId}`);
       treeGrid.bootstrapTable({
         data: this.rows,
         idField: this.idField,
