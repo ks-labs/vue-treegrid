@@ -10,7 +10,7 @@ This component was created using the [tree-grid](https://maxazan.github.io/jquer
 1. Install npm module
 
 ```bash
-npm i @ks-labs/treegrid
+npm i @ksgl/treegrid
 ```
 
 2. Import module
@@ -18,8 +18,8 @@ npm i @ks-labs/treegrid
 ```js
 // main.js
 import Vue from "vue";
-import TreeGrid from "@ks-labs/treegrid";
-import "@ks-labs/treegrid/src/assets/css/jquery.treegrid.css";
+import TreeGrid from "@ksgl/treegrid";
+import "@ksgl/treegrid/src/assets/css/jquery.treegrid.css";
 
 Vue.use(TreeGrid);
 ```

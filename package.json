@@ -1,5 +1,5 @@
 {
-  "name": "@ks-labs/treegrid",
+  "name": "@ksgl/treegrid",
   "version": "0.0.11",
   "author": "Victor Lessa victordsgnr@gmail.com",
   "main": "src/wrapper.js",
@@ -54,7 +54,7 @@
   "keywords": [],
   "license": "ISC",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/ksgl"
+    "access": "public"
   },
   "repository": {
     "type": "git",
